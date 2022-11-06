@@ -6,7 +6,59 @@
     android:layout_height="match_parent">
 
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/NavigationOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="1"
+        android:layout_marginTop="30dp"
+        android:enabled="true"
 
+        app:layout_constraintEnd_toStartOf="@id/NavigationTwo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/NavigationTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="2"
+        android:layout_marginTop="30dp"
+        android:enabled="false"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@id/NavigationThree"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/NavigationOne" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/NavigationThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="3"
+        android:layout_marginTop="30dp"
+        android:enabled="false"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/NavigationFour"
+        app:layout_constraintStart_toEndOf="@id/NavigationTwo" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/NavigationFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="4"
+        android:layout_marginTop="30dp"
+        android:enabled="false"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/NavigationThree" />
+    
+    
 <androidx.fragment.app.FragmentContainerView
     android:id="@+id/FragmentContainer"
     android:layout_width="0dp"

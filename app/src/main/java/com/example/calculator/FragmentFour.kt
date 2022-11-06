@@ -1,6 +1,7 @@
 package com.example.calculator
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,31 +31,54 @@ class FragmentFour : Fragment() {
         return binding.root
     }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setFragmentResultListener("requestKey") { requestKey, bundle ->
-            // We use a String here, but any type that can be put in a Bundle is supported
+        var result = 0
 
-            var result = bundle.getInt("bundleKey")
+        setFragmentResultListener("requestKey1") { requestKey, bundle ->
+            val num1: String
+            num1 = bundle.getString("bundleKey").toString()
+
+            setFragmentResultListener("requestKey2") { requestKey, bundle ->
+                val num2: String
+                num2 = bundle.getString("bundleKey").toString()
+
+                setFragmentResultListener("requestKey3") { requestKey, bundle ->
+                    val symb: String
+
+                    symb = bundle.getString("bundleKey").toString()
+                    Log.d("result_tag", symb)
+                    when(symb) {
+                        "*" -> result = num1.toInt() * num2.toInt()
+                        "/" -> result = num1.toInt() / num2.toInt()
+                        "+" -> result = num1.toInt() + num2.toInt()
+                        "-" -> result = num1.toInt() - num2.toInt()
+                    }
+
+                    binding.Result.setText(result.toString())
+
+                }
 
 
-            binding.Result.setText(result)
+            }
 
-            // Do something with the result
+
+
         }
+
+//        setFragmentResultListener("requestKey2") { requestKey2, bundle ->
+//
+//            var num2 = bundle.getString("bundleKey")
+////            binding.Result.setText(num2)
+//
+//        }
+
+
     }
-
-
-
-
 
     private fun onBackPressed() {
         navigator().goBack()
 
     }
-
-
 
 }

@@ -1,10 +1,13 @@
 package com.example.calculator
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import com.example.calculator.contract.navigator
 import com.example.calculator.databinding.FragmentFirstBinding
 import com.example.calculator.databinding.FragmentSecondBinding
@@ -36,6 +39,12 @@ class FragmentThird : Fragment() {
     }
 
     private fun onNextPressed() {
+        val result = binding.ThirdNum.text.toString()
+        Log.d("result_tag", result)
+
+        setFragmentResult("requestKey3", bundleOf("bundleKey" to result))
+
+
         navigator().showFragmentFour()
 
     }

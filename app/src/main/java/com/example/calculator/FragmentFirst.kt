@@ -2,6 +2,7 @@ package com.example.calculator
 
 import android.R
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +24,7 @@ class FragmentFirst : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFirstBinding.inflate(inflater,container, false)
+        binding = FragmentFirstBinding.inflate(inflater,container,false)
 
         binding.NextButton.setOnClickListener{ onNextPressed() }
 
@@ -32,15 +33,12 @@ class FragmentFirst : Fragment() {
 
 
     private fun onNextPressed() {
+        val result = binding.FirstNum.text.toString()
+        Log.d("result_tag", result)
 
-        val result = binding.FirstNum
-
-        // Use the Kotlin extension in the fragment-ktx artifact
-        setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+        setFragmentResult("requestKey1", bundleOf("bundleKey" to result))
         navigator().showFragmentSecond()
 
     }
-
-
 
 }

@@ -2,6 +2,7 @@ package com.example.calculator
 
 import android.R
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,12 +35,21 @@ class FragmentSecond : Fragment() {
     }
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+
     private fun onBackPressed() {
         navigator().goBack()
 
     }
 
     private fun onNextPressed() {
+        val result = binding.SecondNum.text.toString()
+        Log.d("result_tag", result)
+
+        setFragmentResult("requestKey2", bundleOf("bundleKey" to result))
 
         navigator().showFragmentThird()
 
